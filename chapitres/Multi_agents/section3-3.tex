@@ -1,0 +1,192 @@
+\subsection{Objectif}
+Modéliser la dynamique spatiale du Meriones shawi et déterminer la nature de son mouvement, en tenant compte des contraintes environnementales, et comparer deux modèles de décision, aléatoire et "privilégié", avec le mouvement observé en réalité.
+
+\subsection{Entités, variables d'états et échelles}
+\begin{itemize}
+\item{\textbf{Agents/individus}
+Notre modèle est composé par deux types d'agent:
+\begin{enumerate}
+
+\item{Un agent mobile, dans notre cas c'est un rongeur(la Merione shawi), qui est décrit par:
+\begin{itemize}
+\item{Le terrier: C'est le point de r\'ef\'erence du rongeur autour duquel il se d\'eplace dans un p\'erim\`etre qui d\'epend de son poids. Initialement la position du terrier est choisie aléatoirement mais elle change au cours de la simulation.}
+
+\item{Position: C'est la position du rongeur dans la grille de cellules et/ou par rapport à son terrier.}
+
+\item{Poids: Le poids est fixé aléatoirement, il définit d'autres paramètres comme le rayon de la zone de recherche et la vitesse de déplacement.}
+
+\item{Rayon de recherche: Il est fixé dès le début de la simulation et dépend du poids de l'individu. Il caractérise la région de déplacement/recherche.}
+%\item{Taille}: Le rapport poids/taille peut nous renseigner sur la distribution de masse du rongeur et donc on peut déterminer d'autres caractéristiques qui peuvent influencer son comportement.
+%\item{l'\'energie: Le niveau d'\'energie influence le poids du rongeur et donc toutes les autres caract\'eristiques qui d\'epend du poids.}
+\item{Recherche: Elle caract\'erise la capacit\'e du rongeur \`a d\'ecouvrir des nouveaux terrains(cellules).}
+%\item{Infection: C'est une variable bool\'eenne qui indique l'\'etat d'infection du rongeur.}
+\item{Information: Les données de terrain disponibles chez le rongeur. Peut être représentée sous-forme d'une matrice.}
+\end{itemize} 
+
+
+%On va calculer d'autres paramètres en fonction des variables du rongeur pour qu'on puisse décrire son comportement.
+%\begin{itemize}
+%\item{IMC: C'est l'indice de masse corporelle. \`A partir  de cet indice on va mesurer la vitesse du rongeur. }
+%\item{Besoin: C'est le besoin en alimentation, il dépend de la taille de l'individu et influence le poids et la capacité.}
+%\item{Capacité: Le rongeur peut manger plus qu'il a besoin mais il ne peut pas dépasser sa capacité maximale, cette capacité va être mesurée en fonction des paramètres besoin et poids.}
+%\end{itemize}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{M.shawi}
+  \begin{tabular}[t]{|c|c|}
+    \hline
+      \textbf{Variable} & \textbf{Unit\'e}  \\
+    \hline
+     Terrier & (x,y)(ligne, colonne)  \\
+    \hline
+     Position & (x,y)(coordonnées \% au terrier)  \\
+    \hline
+     Poids & g(gramme)  \\
+    \hline
+    Rayon de recherche & m/cellule \\
+    \hline
+    Recherche & Vecteur vitesse \\
+    \hline
+  \end{tabular}
+  \label{tab:M.shawi}
+\end{table}
+}
+
+\item{Un agent fixe; L'environnement, dans lequel sont situés les agents mobiles, est composé d'une grille à cellules représentant les caractéristiques du terrain ainsi que les positions des terriers des rongeurs. La cellule est d\'ecrite par les variables suivantes.
+
+\begin{itemize}
+\item{Urbain: Une variable bool\'eenne, on va supposer que les rongeurs ne s'installent pas dans les milieux urbains.}
+
+\item{Nature de sol: Il faut indiquer la nature du sol parce qu'elle pr\'esente un crit\`ere dont le rongeur tient compte, g\'en\'eralement il favorise les sols qui sont facile \`a creuser comme le sable et il d\'eteste les terrains couv\`erts d'eau.}
+
+\item{Densit\'e de plantes: C'est le nombre de plantes par unit\'e de surface, les plantes repr\'esentent la principale source d'alimentation pour les rongeurs, leurs densités dans chaque cellule changent au cours de la simulation.}
+\end{itemize}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Cellule (Grille)}
+  \begin{tabular}[t]{|c|c|}
+    \hline
+      \textbf{Variable} & \textbf{Unit\'e}  \\
+    \hline
+     Urbain & Bool (oui/non) \\
+    \hline
+     Nature de sol & Sable, standard, argile, eau  \\
+    \hline
+     Densit\'e de plantes& plantes/hectare   \\
+    \hline
+      \end{tabular}
+  \label{tab:Grille}
+\end{table}
+
+}
+\end{enumerate}
+}
+\item{\textbf{Unités spatiales}: La surface d'une cellule est fixée \'a (.ha/ .m x .m). La grille est sous forme d'une matrice (.x.) }
+
+\item{\textbf{Unités de temps}: Chaque pas de temps présente une période d'un(e) heure/ jour/ semaine.}
+
+\item{\textbf{Environnement}: Parmi les contraintes/variables on trouve l'humidité, la température, la précipitation, la saison de récolte}
+
+\item{\textbf{Collections/Groupes}. Jusqu'à ce stade là, on n'a pas observé un comportement lié spécialement à un groupe d'individus}
+
+\end{itemize}
+
+\subsection{Processus et ordonnancement}
+Le rongeur est initialement au \textbf{repos}, donc il est à l'origine (terrier) qui est fixé aléatoirement au début de simulation. Ensuite il va \textbf{explorer} le terrain ,en se déplaçant, " aléatoirement " ou dans une direction privilégiée, dans un périmètre donné autour de son terrier. S'il arrive à collecter les informations de \underline{95\% du périmètre}, il \textbf{change} son terrier en choisissant la meilleur position. Après il continue l'exploration, s'il \underline{trouve une ressource}, il va s'arrêter (rester dans la même cellule) et commencer à \textbf{manger}. Tant qu'il \underline{existe} \underline{une ressource d'alimentation}, il continue à manger sinon il continue à explorer. \\
+\textit{Ordre de processus du rongeur}: Explorer, Manger et Changer le terrier.
+
+En ce qui concerne les cellules de la grille, les rongeurs vont influencer la densité végétale. Pour éviter les cas de désertification on va ajouter un facteur de "cultuvation", donc on doit préciser quelles sont les terres (cellules) cultivées et ensuite imposer un taux d'augmentation de la densité végétale.
+
+\textit{Ordre de processus de la cellule (terrain)}: Augmentation de la densité végétale grâce aux efforts de "cultivation", Diminution de la densité végétale à cause des rongeurs.
+
+Comment doit-on modéliser le temps alors que les événements ne se font pas à la même échelle/grandeur du temps?
+\begin{figure}[hbtp!]
+\centering
+\resizebox{0.8\textwidth}{!}{
+\includegraphics{images/diagramme.png}}
+\caption{M.shawi flow chart}
+\label{fig:Diagramme des activités du rongeur}
+\end{figure}
+
+
+\subsection{\'Eléments de conception}
+
+\begin{itemize}
+\item{Principes et Hypothèses:
+\begin{itemize}
+\item{H1: On fait l'hypothèse que le rongeur doit se déplacer dans un périmètre donné autour de son terrier, l'étendu du périmètre dépend de son \textbf{poids}, donc le terrier (pas forcement le même terrier) représente le point de départ et le point d'arrivé dans chaque cycle de simulation.}
+\item{H2: On fait l'hypothèse que le rongeur a deux états; soit qu'il se déplace à une vitesse qui dépend de son \textbf{poids},  soit qu'il est fixe pour manger ou pour creuser un nouveau terrier.}
+%\item{H3: Le comportement du rongeur dépend du niveau de son réservoir, s'il est vide il doit le remplir, s'il est plein il a un excès d'énergie donc il est capable de se déplacer pour explorer le milieu.}
+\item{H3: Les poids des rongeurs sont fixés aléatoirement.}
+%\item{H5: On suppose que le déplacement des individus se fait d'une manière "aléatoire" et ne peut dépendre que de l'état du terrain, donc on néglige les impacts d'environnement comme la prédation, le labourage, les incendies etc...). Pendant le déplacement, la capacité maximale de réservoir peut augmenter.}
+\item{H4: La recherche d'un terrain pour creuser un nouveau terrier se base sur trois critères:
+ \begin{enumerate}
+\item{Nature du sol: Sable, argile, standard ou eau. Le rongeur préfère les terrains qui sont facile à creuser.}
+\item{Distribution des ressources: Le rongeur va s'installer proche des ressources alimentaire. }
+\item{Densité des rongeurs: On va imposer une marge de tolérance au dessus de laquelle le rongeur ne peut pas s'installer.}
+ \end{enumerate}
+%\item{H6: La capacité de manger dépend en premier lieu du besoin en alimentation, du poids et du déplacement effectué}
+ }
+\end{itemize}
+}
+\item{\'Emergence: 
+On observe un phénomène de propagation/diffusion dans le mouvement des rongeurs.}
+\item{Adaptation}
+\item{Objectifs}
+\item{Apprentissage}
+\item{Prédiction}
+\item{Perception: 
+Les rongeurs ont la capacité de percevoir les ressources alimentaires à proximité/distance.
+
+Les cellules savent l'existence des rongeurs surelles pour calculer leur densité}
+\item{Interaction:
+On néglige l'interaction entre les individus, la compétition et la présence d'autre type des rongeurs (Exp: Psammomys obesus).
+Si le rongeur trouve une ressource alimentaire il peut en consommer.}
+\item{Stochasticité: 
+On interprète le déplacement des individus d'une zone à autre d'une manière probabiliste. On suppose que l'individu migre vers une zone voisine dont l'index (l'information sur le terrain) est plus grand.}
+\item{Coopération: }
+
+\item{Observations: 
+Dans chaque zone, on note la densité des rongeurs, la densité végétale et la nature de sol.
+
+L'affichage principal du simulateur est une carte affichant les caractéristiques du terrain(nature de sol, densité végétale, terrier etc...) ainsi que les rongeurs. Cet affichage est mis à jour à chaque pas de temps permettant de visualiser la dynamique de déplacement.}
+\end{itemize}
+
+\subsection{Initialisation}
+
+\subsection{Données d'entrée}
+\subsection{Sous-modèles}
+
+\begin{itemize}
+\item{Collecte d'informations: $Note = Note_{ressource} + Note_{sol} + Note_{dens}$.\\
+$Note_{ressource} = 0.6 * R_1 + 0.3 * R_2 + 0.1 * R_3$, $R_{i = 1,2,3} \in{\{0,1\}} $\\
+$Note_{sol}$ est fixée selon le type du sol. \\
+$Note_{dens} = - \alpha \frac{Nb_{rongeurs}}{sruface} $
+ }
+\item{Marche à direction privilégiée: Soit $u_i$ position de l'individu i à l'instant t, $u_i^{t} = (x_i^t, y_i^t)$. \`A chaque pas de temps l'individu effectue un déplacement $(\delta_x, \delta_y)$, $u_i^{t+1} = (x_i^t + \delta_x, y_i^{t} + \delta_y)$ avec $\sqrt{(x_i^{t} + \delta_x - x_{i0})^{2}+(y_i^{t} + \delta_y - y_{i0})^2} < R^2$, où $(x_{i0}, y_{i0})$ est la position du terrier du rongeur i, et $R$ est le rayon de la zone de recherche. \\
+$\delta_x,\delta_y \in [-Pas_{max}, Pas_{max}] / 0$ où $Pas_{max}$ est le pas maximal que peut effectuer le rongeur dans chaque direction. Le choix de $\delta_{x,y}$ dépend du mode de la marche, si elle est aléatoire les cas possibles seront équiprobables, et dans le cas où la marche est à direction privilégiée, les probabilités dépendent de la disponibilité des ressources dans les cellules voisines. Comment choisir $\delta_{x,y}$ ? (Somme des Gaussiennes) }
+
+
+\item{Mise à jour des ressources: $R = R + R_{prod} - R_{con}$ \\
+Ressource produite: $ R_{prod}$ peut être le nombre de plantes produites à chaque pas de temps. \\
+Ressource consommée: $ R_{con} = \sum Q_i$ ,  $Q_i$ est la quantité/nombre de plantes consommée(s) par le rongeur $i$ à chaque pas de temps. }
+%\item{Mise à jour du poids: $P = P + \beta (N_{resv} - besoin)$
+%\\ $N_{resv}$: niveau de ressource dans le réservoir du rongeur. \\
+%$besoin$: Besoin quotidien en alimentation du rongeur.}
+%\item{Mise à jour besoin: $besoin = f(Taille^{3} )\% volume$}
+%\item{Mise à jour de la taille: $Taille = Taille + a*\Delta Capact * f(besoin, reservoir) $ }
+%\item{Mise à jour $V_{max}$}
+%\item{Mise à jour Capacité: Capacité=$besoin + f(poids, deplacement)$}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+

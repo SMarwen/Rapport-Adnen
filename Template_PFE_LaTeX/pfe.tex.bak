@@ -1,0 +1,172 @@
+\documentclass[a4paper,12pt,openany]{book}
+
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[latin1]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{slashbox}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{smallcap}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23.5cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\topmargin}{0cm}
+\setlength{\footskip}{0cm}
+\setlength{\topskip}{0cm}
+\setlength{\parindent}{0.5cm}
+\setlength{\voffset}{0cm}
+\setlength{\hoffset}{0cm}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+
+\frontmatter \thispagestyle{empty} \vspace*{-1.5\baselineskip}
+\hspace{-0.05\linewidth} \renewcommand{\fboxrule}{2pt}
+\fbox{\begin{minipage}[b][\textheight][b]{1.05\linewidth}
+    \centerline{\resizebox{0.2\textwidth}{!}{\includegraphics{logo-utm}}}
+    \centerline{\textbf{Université de Tunis El Manar}}
+    \vspace{\baselineskip}
+    \centerline{\resizebox{0.65\textwidth}{!}{\includegraphics{en-tete-enit}}}
+    \vfill \centerline{\Large \textbf{Département Génie Électrique}}
+    \vspace{\baselineskip} \vfill \centerline{\LARGE \textbf{Projet de
+        Fin d'\'{E}tudes}}\vspace{\baselineskip} \vfill
+    \renewcommand{\fboxrule}{1.5pt} \vfill \centerline{
+      \textbf{Présenté par}} \centerline{\Large \textbf{<Prénom NOM>}}
+    \vspace{\baselineskip} \centerline{ \textbf{Pour l'obtention du}}
+    \centerline{\Large \textbf{Diplôme National d'Ingénieur en Génie
+        \'{E}lectrique}} \vspace{\baselineskip}
+    \centerline{\fbox{\parbox{0.95\textwidth}{\bf \LARGE\center
+          \vspace{0.4\baselineskip} <Titre du rapport>
+          \\[0.4\baselineskip]}}} \vspace{\baselineskip}
+    \centerline{\textbf{Réalisé à}} \centerline{\large
+      \textbf{<Organisme d'accueil>}} \vspace{\baselineskip}
+    \vfill \hspace{0.05\textwidth} \textbf{Soutenu le .. juin 20..}\\[0.5\baselineskip]
+    \hspace*{0.05\textwidth} \textbf{Devant le Jury~:}
+    \begin{tabbing}
+      \hspace{0.1\textwidth} \= \textbf{Pr\a'{e}sident}
+      \hspace{0.25\textwidth} \= : \textbf{M./M\textsuperscript{me}} \=
+      \textbf{<Prénom NOM> }\\
+      \>\textbf{Rapporteur}  \>: \textbf{M./M\textsuperscript{me}} \> \textbf{<Prénom NOM>} \\
+      \>\textbf{Encadreur Organisme d'accueil} \>: \textbf{M./M\textsuperscript{me}} \> \textbf{<Prénom NOM>} \\
+      \>\textbf{Encadreur ENIT}  \>: \textbf{M./M\textsuperscript{me}} \> \textbf{<Prénom NOM> }
+    \end{tabbing}
+    \vfill \centerline{\textbf{Année universitaire 20../20..}}
+    \vspace{\baselineskip}
+  \end{minipage}}
+
+\newpage
+\thispagestyle{empty}
+\centerline{\Large \textbf{Remerciements}}
+
+\newpage
+\thispagestyle{empty}
+\centerline{\Large \textbf{Résumé}}
+\vspace{\baselineskip}
+Le résumé du rapport devra comporter environ 10 lignes.
+\newline \noindent \textbf{Mots clés~:} 5 mots clés
+\vspace{2\baselineskip}
+
+\centerline{\Large \textbf{Abstract}}
+\vspace{\baselineskip}
+The abstract of the report should have roughly 10 lines long.
+\newline \noindent \textbf{Key Words~:} 5 key words
+
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\newpage
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+\chapter{Introduction générale}
+
+Le texte du rapport peut être fourni en Français ou en Anglais.
+Le titre du rapport, le(s) auteur(s), leur(s) encadrant(s) couvrent
+toute la largeur de la page de garde. Un résumé avec mots clés est
+demandé. La table des matières, les listes des figures et des tableaux
+doivent être présentées. Une liste des abréviations peut être ajoutée
+selon le besoin après la liste des tableaux.
+
+
+\mainmatter
+\chapter{Titre}
+
+\section{Introduction}
+
+\section{Titre du paragraphe}
+
+\subsection{Titre du sous-paragraphe}
+
+\subsubsection{Titre du sous-sous-paragraphe}
+
+La figure~\ref{fig:exemple} et le tableau~\ref{tab:exemple} sont
+référencés dans le texte.
+
+\begin{figure}[htbp!]
+  \centering
+  \resizebox{0.3\textwidth}{!}{\includegraphics{exemple-fig}}
+  \caption{Titre de la figure}
+  \label{fig:exemple}
+\end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Titre du tableau}
+  \begin{tabular}[t]{|c|c|c|c|c|}
+    \hline
+      & A & B & C & D \\
+    \hline
+    \hline
+    1 &   &   &   &   \\
+    \hline
+    2 &   &   &   &   \\
+    \hline
+    3 &   &   &   &   \\
+    \hline
+  \end{tabular}
+  \label{tab:exemple}
+\end{table}
+
+Les références bibliographiques doivent être citées dans le texte~:
+\cite{KYA06}, \cite{SCH96}, \cite{MES10}, \cite{KHA91}, \cite{LAR96}.
+
+
+\chapter{Titre}
+
+
+\backmatter
+
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{unsrt-fr}
+\bibliography{biblio}
+
+\chapter{Annexe 1}
+
+\chapter{Annexe 2}
+
+
+\end{document}
+
+
+
+
+
+

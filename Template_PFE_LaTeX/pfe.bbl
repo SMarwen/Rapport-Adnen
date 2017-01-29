@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname fonteauteurs\endcsname\relax
+\def\fonteauteurs{\scshape}\fi
+\makeatother
+
+\bibitem{KYA06}
+P.M. \bgroup\fonteauteurs\bgroup \textsc{Kyamusugulwa}\egroup\egroup{} :
+\newblock Faible poids de naissance au {M}aniema ({R}épublique {D}émocratique
+  du {C}ongo).
+\newblock {\em Cahiers d'études et de recherches francophones / Santé},
+  16(2)\string:\penalty500\relax 23--39, Avril 2006.
+
+\bibitem{SCH96}
+M.~\bgroup\fonteauteurs\bgroup \textsc{Schwiegershausen}\egroup\egroup{},
+  H.~\bgroup\fonteauteurs\bgroup \textsc{Kropp}\egroup\egroup{} et
+  P.~\bgroup\fonteauteurs\bgroup \textsc{Pirsch}\egroup\egroup{} :
+\newblock {A} {S}ystem {L}evel {HW/SW} {P}artitioning and {O}ptimization
+  {T}ool.
+\newblock \emph{In} {\em Proceedings of the conference on European Design
+  Automation}, pages 120--125, 1996.
+
+\bibitem{MES10}
+V.~\bgroup\fonteauteurs\bgroup \textsc{Mesguich}\egroup\egroup{} et
+  A.~\bgroup\fonteauteurs\bgroup \textsc{Thomas}\egroup\egroup{} :
+\newblock {\em Net recherche 2010 : le guide pratique pour mieux trouver
+  l'information utile et surveiller le web}.
+\newblock ADBS, 4\textsuperscript{ème} \'edition, 2010.
+
+\bibitem{KHA91}
+J.L. \bgroup\fonteauteurs\bgroup \textsc{Khalfaoui}\egroup\egroup{} :
+\newblock {\em L'amélioration des plantes pour l'adaptation aux milieux
+  arides}, chapitre Approche de l'amélioration génétique de l'adaptation à la
+  sécheresse~: cas de l'arachide au Sénégal.
+\newblock John Libbey Eurotext, Paris, 1991.
+
+\bibitem{LAR96}
+L.~\bgroup\fonteauteurs\bgroup \textsc{Lariviere}\egroup\egroup{} :
+\newblock {\em Conception et réalisation d'un nouveau répertoire terminologique
+  et documentaire unifié}.
+\newblock Th\`ese de doctorat, Université de Montréal : Faculté des arts et
+  sciences, Février 1996.
+\newblock Disponible sur Internet <
+  http://www.pum.umontreal.ca/theses/pilote/lariviere/these.html >.
+
+\end{thebibliography}

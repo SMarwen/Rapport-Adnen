@@ -1,0 +1,198 @@
+\documentclass[a4paper,12pt,openany]{book}
+
+\usepackage[francais]{babel}
+\usepackage{graphicx}\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage[latin1]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{latexsym}
+%\usepackage{slashbox}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+%\usepackage{smallcap}
+
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23.5cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\topmargin}{0cm}
+\setlength{\footskip}{0cm}
+\setlength{\topskip}{0cm}
+\setlength{\parindent}{0.5cm}
+\setlength{\voffset}{0cm}
+\setlength{\hoffset}{0cm}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+
+\frontmatter \thispagestyle{empty} \vspace*{-1.5\baselineskip}
+\hspace{-0.05\linewidth} \renewcommand{\fboxrule}{2pt}
+\fbox{\begin{minipage}[b][\textheight][b]{1.05\linewidth}
+    \centerline{\resizebox{0.2\textwidth}{!}{\includegraphics{logo-utm}}}
+    \centerline{\textbf{Université de Tunis El Manar}}
+    \vspace{\baselineskip}
+    \centerline{\resizebox{0.65\textwidth}{!}{\includegraphics{en-tete-enit}}}
+    \vfill \centerline{\Large \textbf{Département Génie Industriel}}
+    \vspace{\baselineskip} \vfill \centerline{\LARGE \textbf{Projet de
+        Fin d'\'{E}tudes}}\vspace{\baselineskip} \vfill
+    \renewcommand{\fboxrule}{1.5pt} \vfill \centerline{
+      \textbf{Présenté par}} \centerline{\Large \textbf{Saadaoui Adnen}}
+    \vspace{\baselineskip} \centerline{ \textbf{Pour l'obtention du}}
+    \centerline{\Large \textbf{Diplôme National d'Ingénieur en:}}
+    
+    {\Large \textbf{ Mod\'elisation pour l'Industrie et Services}} \vspace{\baselineskip}
+    \centerline{\fbox{\parbox{0.95\textwidth}{\bf \LARGE\center
+          \vspace{0.1\baselineskip} Analyse et Visualisation des Réseaux Sociaux
+          \\[0.2\baselineskip]}}} %\vspace{\baselineskip}
+    \centerline{\textbf{Réalisé à}} \centerline{\large
+      \textbf{Institut Pasteur}} %\vspace{\baselineskip}
+    \vfill \hspace{0.05\textwidth} \textbf{Soutenu le .. septembre 2017}\\[0.5\baselineskip]
+    \hspace*{0.05\textwidth} \textbf{Devant le Jury~:}
+    \begin{tabbing}
+      \hspace{0.1\textwidth} \= \textbf{Pr\a'{e}sident}
+      \hspace{0.25\textwidth} \= : \textbf{M./M\textsuperscript{me}} \=
+      \textbf{<Prénom NOM> }\\
+      \>\textbf{Rapporteur}  \>: \textbf{M./M\textsuperscript{me}} \> \textbf{<Prénom NOM>} \\
+      \>\textbf{Encadreur Organisme d'accueil} \>: \textbf{M./M\textsuperscript{me}} \> \textbf{<Prénom NOM>} \\
+      \>\textbf{Encadreur ENIT}  \>: \textbf{M./M\textsuperscript{me}} \> \textbf{<Prénom NOM> }
+    \end{tabbing}
+    \vfill \centerline{\textbf{Année universitaire 2015/2016}}
+    \vspace{\baselineskip}
+  \end{minipage}
+  }
+\newpage
+\thispagestyle{empty}
+\centerline{\Large \textbf{Remerciements}}
+
+\newpage
+\thispagestyle{empty}
+\centerline{\Large \textbf{Résumé}}
+\vspace{\baselineskip}
+Le résumé du rapport devra comporter environ 10 lignes.
+\newline \noindent \textbf{Mots clés~:} 5 mots clés
+\vspace{2\baselineskip}
+
+\centerline{\Large \textbf{Abstract}}
+\vspace{\baselineskip}
+The abstract of the report should have roughly 10 lines long.
+\newline \noindent \textbf{Key Words~:} 5 key words
+
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\newpage
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+\chapter{Introduction générale}
+\begin{itemize}
+\item{Problématique et Objectif}
+\item{Réseaux Sociaux}
+\item{Contexte du Projet}
+\end{itemize}
+
+
+Contexte du Projet:
+\newline
+-L'Obésité:
+\begin{itemize}
+\item{Qu'est ce que l'obésité?}
+\item{Pourquoi l'obésité est une maladie dangereuse?}
+\item{Est ce que l'obésité est une maladie transmissible?}
+\item{Quelle est la relation entre l'obésité et les réseaux?}
+\end{itemize}
+[L'obésité: définition]
+En 1997, l'obésité a été reconnue comme une maladie par l'OMS (Organisation Mondiale de la santé)
+[Risques de l'obésité]
+[Caractère transmissible do l'obésité]
+La propagation des maladies transmissibles est l'un des problèmes qui n'a pas encore de solution concrète, peut-être on n'a pas les moyens qui nous permettent d'empêcher/.. la propagation de certains phénomènes, cependant, dans une certaine mesure, on peut les contrôler pour diminuer les dégâts. Généralement le phénomène de propagation n'est pas limité/réservé/lié seulement aux maladies, il y en a d'autres domaines/cas/situations qui vérifient/possèdent la propriété des maladies transmissibles; les médias sociaux illustrent bien le phénomène de propagation, cette fois-ci ce sont les informations, le buzz et même les émotions qui se propagent/partagent. Pour étudier un tel problème, les graphes peuvent être une bonne méthode de modélisation et par conséquence les réseaux aussi dans le cas d'un problème dynamique qui varie au cours du temps.
+\newline
+Problématique et Objectifs:
+\newline
+Ce projet de fin d'études a comme objectif la création/recherche/ d'une plate-forme qui permet l'analyse et la visualisation des réseaux afin d'en extraire les informations nécessaires pour l'étude d'un problème donné. Souvent les réseaux sont représentés sous forme de tableaux ou matrices, cette présentation est favorable pour la manipulation des données, mais d'un point de vue visuel, il est difficile de suivre l'évolution/variations/changements dans un réseau en se basant seulement sur la lecture des données à partir des tableaux. Donc une représentation graphique des tableaux peut bien répondre au problème, les graphes sont de bons moyens  pour faire parler/expliquer/visualiser/ les réseaux. Les outils d'analyse et de visualisations des graphes sont multiple, chaque outil a ses propres caractéristiques, donc le choix dépend de la nature du réseaux ainsi que ces caractéristiques. 
+
+\mainmatter
+\chapter{Graphes et Réseaux}
+
+\section{Introduction}
+
+\section{Notions de base}
+
+\section{Analyse}
+
+\section{Visualisation}
+
+La figure~\ref{fig:exemple} et le tableau~\ref{tab:exemple} sont
+référencés dans le texte.
+
+\begin{figure}[htbp!]
+  \centering
+  \resizebox{0.3\textwidth}{!}{\includegraphics{exemple-fig}}
+  \caption{Titre de la figure}
+  \label{fig:exemple}
+\end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Titre du tableau}
+  \begin{tabular}[t]{|c|c|c|c|c|}
+    \hline
+      & A & B & C & D \\
+    \hline
+    \hline
+    1 &   &   &   &   \\
+    \hline
+    2 &   &   &   &   \\
+    \hline
+    3 &   &   &   &   \\
+    \hline
+  \end{tabular}
+  \label{tab:exemple}
+\end{table}
+
+Les références bibliographiques doivent être citées dans le texte~:
+\cite{KYA06}, \cite{SCH96}, \cite{MES10}, \cite{KHA91}, \cite{LAR96}.
+
+\section{Conclusion}
+
+\chapter{Outils d'analyse et de visualisation des graphes}
+\section{Introduction}
+\section{Tableau comparatif}
+\section{Performances}
+\section{Avantages et Inconvénients des outils choisis}
+
+\backmatter
+\chapter{Conclusion générale}
+
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{unsrt-fr}
+\bibliography{biblio}
+
+\chapter{Annexe 1}
+
+\chapter{Annexe 2}
+
+
+\end{document}
+
+
+
+
+
+
